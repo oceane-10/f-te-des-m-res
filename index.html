@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonne Fête des Mères 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: #fdf6f0;
+    color: #4a3728;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .petals-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -40px;
+    border-radius: 150% 0 150% 0;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0% { opacity: 0; transform: translateY(0) rotate(0deg) scale(1); }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.4; }
+    100% { opacity: 0; transform: translateY(110vh) rotate(360deg) scale(0.6); }
+  }
+
+  header {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(180deg, #fff0f5 0%, #fdf6f0 100%);
+    overflow: hidden;
+  }
+
+  .header-flower {
+    font-size: 60px;
+    margin-bottom: 20px;
+    display: block;
+    animation: bloom 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  @keyframes bloom {
+    from { transform: scale(0) rotate(-20deg); opacity: 0; }
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .tag {
+    display: inline-block;
+    background: #f7c5d5;
+    color: #8b2252;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.3s both;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 8vw, 64px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: #3d1f2e;
+    animation: fadeUp 0.8s 0.5s both;
+  }
+  header h1 em {
+    font-style: italic;
+    color: #c0446e;
+  }
+
+  header p.subtitle {
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 300;
+    color: #7a5c6e;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.8s 0.7s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .divider {
+    text-align: center;
+    padding: 16px 0;
+    font-size: 22px;
+    letter-spacing: 10px;
+    color: #e8a0b8;
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  .message-card {
+    background: #fff;
+    border: 1.5px solid #f5d0df;
+    border-radius: 20px;
+    padding: 44px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(192, 68, 110, 0.07);
+    animation: fadeUp 0.9s 0.9s both;
+  }
+  .message-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, #fde8f0 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .message-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, #fff0e8 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: #f5c5d5;
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .message-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: #4a2a3a;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .message-sig {
+    margin-top: 28px;
+    font-size: 14px;
+    color: #c0446e;
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+
+  .reasons-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #3d1f2e;
+    text-align: center;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .reasons-title span { color: #c0446e; font-style: italic; }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+  }
+
+  .reason-card {
+    background: #fff;
+    border: 1px solid #f5d0df;
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
+    animation: fadeUp 0.7s both;
+  }
+  .reason-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(192, 68, 110, 0.12);
+  }
+
+  .reason-emoji {
+    font-size: 34px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .reason-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: #5a2a3e;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .reason-desc {
+    font-size: 13px;
+    color: #9e7585;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .memory-section {
+    background: linear-gradient(135deg, #fff5f8 0%, #fff8f0 100%);
+    border: 1px solid #fad4e4;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    animation: fadeUp 0.9s 0.3s both;
+  }
+
+  .memory-icon { font-size: 42px; margin-bottom: 16px; display: block; }
+
+  .memory-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: #3d1f2e;
+    margin-bottom: 16px;
+  }
+
+  .memory-section p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #7a5c6e;
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  footer {
+    text-align: center;
+    padding: 50px 20px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-flowers { font-size: 28px; letter-spacing: 6px; margin-bottom: 16px; }
+
+  footer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #c0446e;
+    margin-bottom: 8px;
+  }
+
+  footer small {
+    font-size: 13px;
+    color: #b89aa8;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .heart-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    background: #c0446e;
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 24px rgba(192, 68, 110, 0.3);
+  }
+  .heart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(192, 68, 110, 0.4);
+  }
+  .heart-btn:active { transform: scale(0.97); }
+
+  .heart-anim {
+    display: inline-block;
+    animation: heartbeat 1.4s ease infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.25); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    56% { transform: scale(1); }
+  }
+
+  .confetti-piece {
+    position: fixed;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: burst 1.2s ease-out forwards;
+  }
+  @keyframes burst {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.4); }
+  }
+</style>
+</head>
+<body>
+
+<div class="petals-container" id="petals"></div>
+
+<header>
+  <span class="header-flower">🌸</span>
+  <div class="tag">Fête des Mères</div>
+  <h1>Pour toi,<br><em>Maman</em></h1>
+  <p class="subtitle">Avec tout l'amour du monde, aujourd'hui et chaque jour</p>
+</header>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<section>
+  <div class="message-card">
+    <span class="quote-mark">"</span>
+    <p class="message-text">
+      Tu es ma première maison, mon premier sourire,<br>
+      ma première chanson. Dans chaque beau souvenir,<br>
+      il y a ta main, ta voix, ton cœur.<br>
+      Merci d'être toi, Maman — ma force, ma lumière.
+    </p>
+    <p class="message-sig">— avec tout mon amour 🌹</p>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<section>
+  <h2 class="reasons-title">Ce que j'aime en <span>toi</span></h2>
+  <div class="reasons-grid">
+    <div class="reason-card" style="animation-delay:0.1s">
+      <span class="reason-emoji">🤗</span>
+      <p class="reason-label">Tes câlins</p>
+      <p class="reason-desc">Un seul suffit à tout réparer</p>
+    </div>
+    <div class="reason-card" style="animation-delay:0.2s">
+      <span class="reason-emoji">🍲</span>
+      <p class="reason-label">Ta cuisine</p>
+      <p class="reason-desc">Aucun restaurant ne peut rivaliser</p>
+    </div>
+    <div class="reason-card" style="animation-delay:0.3s">
+      <span class="reason-emoji">💡</span>
+      <p class="reason-label">Ta sagesse</p>
+      <p class="reason-desc">Toujours les bons mots au bon moment</p>
+    </div>
+    <div class="reason-card" style="animation-delay:0.4s">
+      <span class="reason-emoji">🌟</span>
+      <p class="reason-label">Ton énergie</p>
+      <p class="reason-desc">Tu illumines chaque pièce où tu entres</p>
+    </div>
+    <div class="reason-card" style="animation-delay:0.5s">
+      <span class="reason-emoji">❤️</span>
+      <p class="reason-label">Ton amour</p>
+      <p class="reason-desc">Inconditionnel, infini, unique</p>
+    </div>
+    <div class="reason-card" style="animation-delay:0.6s">
+      <span class="reason-emoji">💪</span>
+      <p class="reason-label">Ta force</p>
+      <p class="reason-desc">Mon modèle, ma plus grande inspiration</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<section>
+  <div class="memory-section">
+    <span class="memory-icon">📸</span>
+    <h2>Un souvenir qui restera pour toujours</h2>
+    <p>
+      Peu importe combien d'années passent, tu seras toujours celle
+      qui m'a appris à me relever, à aimer, à rire — même quand
+      c'est difficile. Tu es mon cœur, Maman.
+    </p>
+    <button class="heart-btn" onclick="celebrate(event)">
+      <span class="heart-anim">♥</span>
+      Envoyer tout mon amour
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-flowers">🌸 🌺 🌷 🌸 🌼</div>
+  <p>Bonne Fête des Mères !</p>
+  <small>Avec tout l'amour du monde - océane· 2026</small>
+</footer>
+
+<script>
+const petalColors = ['#f9c5d5','#f5a0c0','#fde8f0','#fbc8a0','#fdd5c0','#f9e0e8'];
+const container = document.getElementById('petals');
+
+for (let i = 0; i < 22; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const size = Math.random() * 12 + 8;
+  p.style.cssText = `
+    width:${size}px;height:${size*0.7}px;
+    left:${Math.random()*100}%;
+    background:${petalColors[Math.floor(Math.random()*petalColors.length)]};
+    animation-duration:${Math.random()*8+7}s;
+    animation-delay:${Math.random()*10}s;
+    transform:rotate(${Math.random()*360}deg);
+  `;
+  container.appendChild(p);
+}
+
+function celebrate(e) {
+  const colors = ['#c0446e','#f0a0c0','#ffa080','#f5c842','#7ec8e3','#b8e986'];
+  const cx = e.clientX, cy = e.clientY;
+  for (let i = 0; i < 28; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    const angle = (i / 28) * 360;
+    const dist = 80 + Math.random() * 80;
+    const tx = Math.cos(angle * Math.PI / 180) * dist;
+    const ty = Math.sin(angle * Math.PI / 180) * dist - 60;
+    c.style.cssText = `
+      left:${cx}px; top:${cy}px;
+      background:${colors[i % colors.length]};
+      --tx:${tx}px; --ty:${ty}px;
+      animation-duration:${0.9 + Math.random()*0.5}s;
+    `;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 1500);
+  }
+
+  const btn = e.currentTarget;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<span>💝</span> Message envoyé avec amour !';
+  btn.style.background = '#8b2252';
+  setTimeout(() => {
+    btn.innerHTML = orig;
+    btn.style.background = '';
+  }, 2500);
+}
+</script>
+
+</body>
+</html>
